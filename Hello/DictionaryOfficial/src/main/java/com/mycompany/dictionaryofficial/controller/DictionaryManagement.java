@@ -47,6 +47,7 @@ public class DictionaryManagement {
       view.addSearchBoxFocusListener(new SearchBoxFocusListener());
       view.addListSelectionListener(new ListWordSelectionListener());
       view.addSearchBoxListener(new SearchBoxSuggestionListener());
+      view.addSuggestionListener(new SuggestionListener());
       this.crudView.addCrudBtnListener(new CreateEditListener());
       this.crudView.addBackListener(new BackBtnListener());
    }
@@ -54,15 +55,26 @@ public class DictionaryManagement {
    public void showMainView() {
       crudView.setVisible(false);
       mainFrame.setVisible(true);
-      mainFrame.showList(dictionary.getWordTargets(0));
-      
+      mainFrame.showList(dictionary.getWordTargets(0));  
    }
 
    public void showCrudView() {
       mainFrame.setVisible(false);
       crudView.setVisible(true);
    }
-
+   
+   public  void showResultSearch(List<Word> result) {
+      if(result.isEmpty()) {
+         mainFrame.showDetailContent(String.format(HTML_FORMAT,"<h2>There is no result.</h2>"));
+      } else {
+         StringBuilder sb = new StringBuilder();
+         sb.append(String.format(P,"font-size:18px;", "There are " + result.size() + " results."));
+         for (Word word : result) {
+            sb.append(word.getHTMLFormat());
+         }
+         mainFrame.showDetailContent(sb.toString());
+      }
+   }
 
    /**
     * class ListViewListener.
@@ -120,8 +132,8 @@ public class DictionaryManagement {
                      JOptionPane.QUESTION_MESSAGE);
          if(result == JOptionPane.YES_OPTION){
             if (dictionary.removeWordAt(index)) {
-               mainFrame.setListSelectionIndex(index - 1);
                mainFrame.showList(dictionary.getWordTargets(0));
+               mainFrame.setListSelectionIndex(index - 1);
                JOptionPane.showMessageDialog(mainFrame, "Deleted successfully!");
             } else {
                JOptionPane.showMessageDialog(mainFrame, "Fail to delete!");
@@ -155,7 +167,6 @@ public class DictionaryManagement {
            
          } else {
             mainFrame.showDetailContent("");
-
          }
       }
   }
@@ -165,16 +176,16 @@ public class DictionaryManagement {
          String key = mainFrame.getSearchBoxValue();
          List<Word> result = dictionary.dictionarySearcher(key);
          mainFrame.hideSuggestion();
-         if(result.isEmpty()) {
-            mainFrame.showDetailContent(String.format(HTML_FORMAT,"<h2>There is no result for \'" + key +"\'.</h2>"));
-         } else {
-            StringBuilder sb = new StringBuilder();
-            sb.append(String.format(P,"font-size:18px;", "There are " + result.size() + " results for \'" + key + "\'"));
-            for (Word word : result) {
-               sb.append(word.getHTMLFormat());
-            }
-            mainFrame.showDetailContent(sb.toString());
-         }
+         showResultSearch(result);
+      }
+   }
+
+   class SuggestionListener implements ListSelectionListener {
+      public void valueChanged(ListSelectionEvent e) {
+         String key = mainFrame.getSelectionSuggestionValue();
+         List<Word> result = dictionary.dictionarySearcher(key);
+         mainFrame.hideSuggestion();
+         showResultSearch(result);
       }
    }
 
@@ -195,8 +206,9 @@ public class DictionaryManagement {
 
    class BackBtnListener implements ActionListener {
       public void actionPerformed(ActionEvent e) {
-         mainFrame.setListSelectionIndex(0);
          showMainView();
+         mainFrame.setListSelectionIndex(0);
+
       }
    }
 
@@ -209,8 +221,8 @@ public class DictionaryManagement {
 		}
 		public void insertUpdate(DocumentEvent e) {
 			changed();
-		}
-
+      }
+      
 		private void changed() {
          Runnable changed = new Runnable() {
             @Override
@@ -232,8 +244,6 @@ public class DictionaryManagement {
                   data[i] = word.getWordTarget(); 
                   i++;
                }
-              
-               System.out.println(data[0]);
                mainFrame.showSuggestionList(data);
             }
         };       
@@ -273,6 +283,7 @@ public class DictionaryManagement {
                dictionary.getWordAt(selectionIndex).update(data);
                JOptionPane.showMessageDialog(crudView,"Successfully edited!");
                showMainView();
+               mainFrame.setListSelectionIndex(index);
             } else if (index == -1) {
                dictionary.editWordAt(data,  selectionIndex);
             } else {
@@ -286,10 +297,10 @@ public class DictionaryManagement {
                   dictionary.getWordAt(index).update(data);
                   JOptionPane.showMessageDialog(crudView,"Successfully replaced!");
                   showMainView();
+                  mainFrame.setListSelectionIndex(index);
                } 
             }
          }
       }
    }
-
 }

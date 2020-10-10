@@ -10,14 +10,13 @@ import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import com.mycompany.dictionaryofficial.models.*;
-import java.util.List;
+//import com.mycompany.dictionaryofficial.models.*;
+import com.sun.speech.freetts.Voice;
+import com.sun.speech.freetts.VoiceManager;
+
 import java.awt.event.FocusListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseMotionListener ;
-import java.awt.event.MouseEvent;
-import java.awt.*;
 import  java.lang.Thread; 
 /**
  *
@@ -234,11 +233,6 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener, Lis
         );
         suggestionList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         suggestionList.setFixedCellHeight(30);
-        suggestionList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
-            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
-                suggestionListValueChanged(evt);
-            }
-        });
         suggestionSwap.setViewportView(suggestionList);
 
         suggestionContainer.setVisible(false);
@@ -266,6 +260,7 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener, Lis
         mainDisplay.setForeground(new java.awt.Color(29, 42, 87));
         mainDisplay.setText("<html>\r\n  <head>\r\n\r\n  </head>\r\n  <body>\r\n    <p style=\"margin-top: 0; font-size:14px;\">\r\n      \rHere is my text;\n      noun\tused when meeting or greeting someone:\tHello, Paul. I haven't seen you for ages.\tI know her vaguely - we 've exchanged hellos a few times.\tI just thought I'd call by and say hello.\n    </p>\n\t<a href=\"google.com\">google.com</a>\n<button>Hello</button>\n    <p>Hello</p>\r\n  </body>\r\n</html>\r\n");
         mainScrollPane.setViewportView(mainDisplay);
+        System.setProperty("freetts.voices", "com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory");
 
         container.add(mainScrollPane, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 480));
 
@@ -301,8 +296,20 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener, Lis
     }//GEN-LAST:event_aboutUsBtnActionPerformed
 
     private void speakBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_speakBtnActionPerformed
-        // TO DO add your handling code here:
+        Voice voice;
+        System.out.println("before :" + list.getSelectedValue());
+        voice =  VoiceManager.getInstance().getVoice("kevin16");
+        if (voice != null) {
+            voice.allocate();
+            String str = list.getSelectedValue();
+            if (str == null) {
+                str = "Please choose the word";
+            }
+            voice.speak(str);
+        }
+        System.out.println("after " + list.getSelectedValue());
     }//GEN-LAST:event_speakBtnActionPerformed
+
     private void menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuActionPerformed
         // TO DO add your handling code here:
         if (menu.getActionCommand().equals("show")) {
@@ -312,15 +319,6 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener, Lis
         }
     }//GEN-LAST:event_menuActionPerformed
 
-    private void suggestionListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_suggestionListValueChanged
-        // TO DO add your handling code here:
-        System.out.println(searchBox.getText() + " at " + suggestionList.getSelectedIndex());
-        // System.out.println(suggestionList.getSelectedValue());
-        //searchBox.setText(suggestionList.getSelectedValue());
-        searchBtn.doClick();
-        searchBox.setText(suggestionList.getSelectedValue());
-        System.out.println(suggestionList.getSelectedValue());
-    }//GEN-LAST:event_suggestionListValueChanged
 
     public void hideMenu() {
         Thread d = new Thread() {
@@ -391,6 +389,10 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener, Lis
     public int getSelectionSuggestionIndex() {
         return suggestionList.getSelectedIndex();
     }
+
+    public String getSelectionSuggestionValue() {
+        return suggestionList.getSelectedValue();
+    }
     
     public void hideSuggestion() {
         suggestionContainer.setVisible(false);
@@ -448,6 +450,10 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener, Lis
         list.addListSelectionListener(listener);
     }
 
+    public void addSuggestionListener(ListSelectionListener listener) {
+        suggestionList.addListSelectionListener(listener);
+    }
+
     public void addSearchBoxListener(DocumentListener listener) {
         searchBox.getDocument().addDocumentListener(listener);
     }
@@ -457,14 +463,17 @@ public class MainFrame extends javax.swing.JFrame implements ActionListener, Lis
     }
 
     public String getSearchBoxValue() {
-        return searchBox.getText().trim().toLowerCase();
+        return standardString(searchBox.getText());
     }    
     
     public void setSelectionSuggestionIndex(int index) {
         suggestionList.setSelectedIndex(index);
         suggestionList.ensureIndexIsVisible(index);
     }
-    
+
+    public static String standardString(String s) {
+        return s.trim().replaceAll("\\s+", " ").toLowerCase();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton aboutUsBtn;

@@ -434,9 +434,6 @@
                     <Property name="selectionMode" type="int" value="0"/>
                     <Property name="fixedCellHeight" type="int" value="30"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="suggestionListValueChanged"/>
-                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
@@ -477,6 +474,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="&lt;html&gt;&#xd;&#xa;  &lt;head&gt;&#xd;&#xa;&#xd;&#xa;  &lt;/head&gt;&#xd;&#xa;  &lt;body&gt;&#xd;&#xa;    &lt;p style=&quot;margin-top: 0; font-size:14px;&quot;&gt;&#xd;&#xa;      &#xd;Here is my text;&#xa;      noun&#x9;used when meeting or greeting someone:&#x9;Hello, Paul. I haven&apos;t seen you for ages.&#x9;I know her vaguely - we &apos;ve exchanged hellos a few times.&#x9;I just thought I&apos;d call by and say hello.&#xa;    &lt;/p&gt;&#xa;&#x9;&lt;a href=&quot;google.com&quot;&gt;google.com&lt;/a&gt;&#xa;&lt;button&gt;Hello&lt;/button&gt;&#xa;    &lt;p&gt;Hello&lt;/p&gt;&#xd;&#xa;  &lt;/body&gt;&#xd;&#xa;&lt;/html&gt;&#xd;&#xa;"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="System.setProperty(&quot;freetts.voices&quot;, &quot;com.sun.speech.freetts.en.us.cmu_us_kal.KevinVoiceDirectory&quot;);"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

@@ -68,20 +68,22 @@ public class Dictionary {
    }
 
    // make sure that the word is unique.
-   public void addNewWord(Word newWord) {
+   public int addNewWord(Word newWord) {
       String key = newWord.getWordTarget();
-
-      if (binarySearch(key) == -1) {
+      int index = binarySearch(key);
+      if (index == -1) {
          int i = 0;
          for (Word word : words) {
             if (word.getWordTarget().compareTo(key) > 0) {
                this.words.add(i, newWord);
-               return;
+               return i;
             }
             i ++;
          }
          this.words.add(newWord);
+         return words.size();
       }
+      return - index - 1;
    }
 
    // search with absolute precision.
@@ -122,8 +124,6 @@ public class Dictionary {
    }
 
    public List<Word> dictionarySearcher(String key) {
-      key = key.toLowerCase().trim();
-      
       System.out.println("key in searcher " + key);
       List<Word> result = new ArrayList<>();
       if (key.equals("")) return result;
@@ -175,11 +175,13 @@ public class Dictionary {
 
    public void editWordAt(String[] data, int index) {
       this.words.get(index).update(data);
-      while(this.words.get(index).getWordTarget().compareTo(this.words.get(index - 1).getWordTarget()) < 0) {
+      while(index > 0 && this.words.get(index).getWordTarget().compareTo(this.words.get(index - 1).getWordTarget()) < 0) {
          Collections.swap(this.words, index, index - 1);
+         index --;
       }
-      while(this.words.get(index).getWordTarget().compareTo(this.words.get(index + 1).getWordTarget()) > 0) {
+      while(index < this.getWordsSize() -1 && this.words.get(index).getWordTarget().compareTo(this.words.get(index + 1).getWordTarget()) > 0) {
          Collections.swap(this.words, index, index + 1);
+         index ++;
       }
    }
 

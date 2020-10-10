@@ -12,7 +12,6 @@ import javax.swing.event.DocumentEvent;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 /**
  * create read update delete view.
  * 
@@ -284,8 +283,7 @@ public class CrudView extends JFrame implements ActionListener {
 		}
 
 		public void changed() {
-			if (crudWordValidate() && crudMeanValidate() && crudDscValidate() &&
-				crudProValidate() && crudPartOfSpeechValidate()){
+			if (crudWordValidate() && crudMeanValidate() && crudDscValidate()){
 				crudButton.setEnabled(true);
 				return;
 			}
@@ -314,6 +312,7 @@ public class CrudView extends JFrame implements ActionListener {
 	}
 
 	public boolean crudProValidate() {
+        //crudPro.setText(standardString(crudPro.getText()));
 		if (crudPro.getText().equals("")) {
 			System.out.println("pronunciation invalid");
 		}
@@ -325,5 +324,12 @@ public class CrudView extends JFrame implements ActionListener {
 			System.out.println("mean invalid");
 		}
 		return !crudPartOfSpeech.getText().equals("");
-	}
+        }
+        
+        public static String standardString(String s) {
+			if (s.equals("")) {return s;}
+			s = s.trim().replaceAll("\\s+", " ");
+			if (s.equals("")) {return s;}
+			return s;
+        }
 }
