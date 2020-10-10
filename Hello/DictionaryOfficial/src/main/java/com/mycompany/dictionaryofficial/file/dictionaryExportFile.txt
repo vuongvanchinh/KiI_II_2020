@@ -1,0 +1,5 @@
+attract	thu hut
+borrow	vay muon
+bound	vot ra khoi
+everyone	moi nguoi
+hello	xin chao
