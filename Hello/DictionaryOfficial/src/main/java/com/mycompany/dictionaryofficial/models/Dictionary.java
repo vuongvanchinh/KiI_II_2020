@@ -126,7 +126,7 @@ public class Dictionary {
    public List<Word> dictionarySearcher(String key) {
       System.out.println("key in searcher " + key);
       List<Word> result = new ArrayList<>();
-      if (key.equals("")) return result;
+      if (key == null) return result;
       int index = relativeBinarySearch(key);
       System.out.println("relativeBinarySearch result " + index);
       if (index == - 1) return result;

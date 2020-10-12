@@ -5,6 +5,7 @@
  */
 package com.mycompany.dictionaryofficial.view;
 
+import java.awt.event.ActionListener;
 /**
  *
  * @author Dell
@@ -78,6 +79,15 @@ public class HomeView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    public void addTranslateTextBtnListener(ActionListener listener) {
+        translateTextBtn.addActionListener(listener);
+    }
+
+    public void addLookupBtnListener(ActionListener listener) {
+        lookupBtn.addActionListener(listener);
+    }
+
 
     /**
      * @param args the command line arguments

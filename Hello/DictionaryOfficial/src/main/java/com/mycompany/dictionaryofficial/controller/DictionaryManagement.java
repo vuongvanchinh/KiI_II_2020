@@ -12,6 +12,8 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import com.mycompany.dictionaryofficial.models.*;
 import com.mycompany.dictionaryofficial.view.CrudView;
+import com.mycompany.dictionaryofficial.view.GoogleView;
+import com.mycompany.dictionaryofficial.view.HomeView;
 import com.mycompany.dictionaryofficial.view.MainFrame;
 import javax.swing.SwingUtilities;
 
@@ -19,6 +21,9 @@ public class DictionaryManagement {
    private MainFrame mainFrame;
    private CrudView crudView;
    private Dictionary dictionary;
+   private GoogleView googleView;
+   private HomeView homeView;
+   
    
    // format output
    private static final String HTML_FORMAT = "<html><body>%s</body></html>";
@@ -31,28 +36,35 @@ public class DictionaryManagement {
    
 
 
-   public DictionaryManagement(MainFrame view) {
-      this.mainFrame = view;
-      this.crudView = new CrudView();
+   public DictionaryManagement(HomeView view) {
+      this.homeView = view;
+      view.addTranslateTextBtnListener(new GoogleTranslateListener());
+      view.addLookupBtnListener(new LookupListener());
+
+      mainFrame = new MainFrame();
+      crudView = new CrudView();
+      googleView = new GoogleView();
+      googleView.addHomeBtnListener(new HomeBtnListener());
+
       dictionary = new Dictionary();
       dictionary.insertFromFile();
-      mainFrame.showList(dictionary.getWordTargets(0));
-      view.addListViewListener(new ListViewListener());
-      view.addHistoryViewListener(new HistoryViewListener());
-      view.addAddBtnListener(new AddBtnListener());
-      view.addEditBtnListener(new EditBtnListener());
-      view.addDeleteBtnListener(new DeleteListener());
-      view.addSpeakBtnListener(new SpeakListener());
-      view.addSearchBtnListener(new SearchListener());
-      view.addSearchBoxFocusListener(new SearchBoxFocusListener());
-      view.addListSelectionListener(new ListWordSelectionListener());
-      view.addSearchBoxListener(new SearchBoxSuggestionListener());
-      view.addSuggestionListener(new SuggestionListener());
-      this.crudView.addCrudBtnListener(new CreateEditListener());
-      this.crudView.addBackListener(new BackBtnListener());
+      mainFrame.addListViewListener(new ListViewListener());
+      mainFrame.addHistoryViewListener(new HistoryViewListener());
+      mainFrame.addAddBtnListener(new AddBtnListener());
+      mainFrame.addEditBtnListener(new EditBtnListener());
+      mainFrame.addDeleteBtnListener(new DeleteListener());
+      mainFrame.addSearchBtnListener(new SearchListener());
+      mainFrame.addSearchBoxFocusListener(new SearchBoxFocusListener());
+      mainFrame.addListSelectionListener(new ListWordSelectionListener());
+      mainFrame.addSearchBoxListener(new SearchBoxSuggestionListener());
+      mainFrame.addSuggestionListener(new SuggestionListener());
+      mainFrame.addHomeBtnListener(new HomeBtnListener());
+      crudView.addCrudBtnListener(new CreateEditListener());
+      crudView.addBackListener(new BackBtnListener());
    }
 
    public void showMainView() {
+      homeView.setVisible(false);
       crudView.setVisible(false);
       mainFrame.setVisible(true);
       mainFrame.showList(dictionary.getWordTargets(0));  
@@ -62,6 +74,18 @@ public class DictionaryManagement {
       mainFrame.setVisible(false);
       crudView.setVisible(true);
    }
+
+   public void showHomeView() {
+      homeView.setVisible(true);
+      mainFrame.setVisible(false);
+      googleView.setVisible(false);
+   }
+
+   public void showGoogleView() {
+      googleView.setVisible(true);
+      homeView.setVisible(false);
+   }
+
    
    public  void showResultSearch(List<Word> result) {
       if(result.isEmpty()) {
@@ -143,15 +167,22 @@ public class DictionaryManagement {
       }
    }
 
-   class SpeakListener implements ActionListener {
+   class LookupListener implements ActionListener {
       public void actionPerformed(ActionEvent e) {
-
+         showMainView();
       }
    }
 
-   class HomeListener implements ActionListener {
+   class GoogleTranslateListener implements ActionListener {
       public void actionPerformed(ActionEvent e) {
+         showGoogleView();
+      }
+   }
 
+
+   class HomeBtnListener implements ActionListener {
+      public void actionPerformed(ActionEvent e) {
+         showHomeView();
       }
    }
 

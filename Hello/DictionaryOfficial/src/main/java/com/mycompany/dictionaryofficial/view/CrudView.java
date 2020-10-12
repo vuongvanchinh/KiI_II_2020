@@ -60,6 +60,7 @@ public class CrudView extends JFrame implements ActionListener {
         crudPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         crudWord.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        crudWord.getDocument().addDocumentListener(new  DocumentValidateListener());
         crudWord.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Word  ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 18), new java.awt.Color(0, 153, 153))); // NOI18N
 
         crudPro.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
@@ -70,9 +71,11 @@ public class CrudView extends JFrame implements ActionListener {
         crudTitle.setText("Create new word");
 
         crudMean.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        crudMean.getDocument().addDocumentListener(new  DocumentValidateListener());
         crudMean.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Meaning  ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 18), new java.awt.Color(0, 153, 153))); // NOI18N
 
         crudPartOfSpeech.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        crudPartOfSpeech.getDocument().addDocumentListener(new  DocumentValidateListener());
         crudPartOfSpeech.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "Type", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 18), new java.awt.Color(0, 153, 153)), "Part of speech", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 18), new java.awt.Color(0, 153, 153))); // NOI18N
 
         scrollPaneCrud.setBackground(new java.awt.Color(255, 255, 255));
@@ -80,6 +83,7 @@ public class CrudView extends JFrame implements ActionListener {
         scrollPaneCrud.setAutoscrolls(true);
 
         crudDsc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        crudDsc.getDocument().addDocumentListener(new  DocumentValidateListener());
         scrollPaneCrud.setViewportView(crudDsc);
 
         crudButton.setBackground(new java.awt.Color(255, 255, 255));
