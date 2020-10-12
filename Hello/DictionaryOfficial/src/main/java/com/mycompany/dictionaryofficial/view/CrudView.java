@@ -39,7 +39,7 @@ public class CrudView extends JFrame implements ActionListener {
      */
     // @SuppressWarnings("unchecked")
     // <editor-fold default state="collapsed" desc="Generated
-    // Code">//GEN-BEGIN:initComponents
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
         crudPanel = new javax.swing.JPanel();
@@ -54,153 +54,112 @@ public class CrudView extends JFrame implements ActionListener {
         crudSynonym = new javax.swing.JTextField();
         back = new javax.swing.JButton();
 
-        // setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
         crudPanel.setBackground(new java.awt.Color(255, 255, 255));
 
         crudWord.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        crudWord.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Word  ",
-                javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                new java.awt.Font("Tahoma", 3, 18), new java.awt.Color(0, 153, 153))); // NOI18N
-        crudWord.getDocument().addDocumentListener(new  DocumentValidateListener());
-              
-        // crudWord.addActionListener(new java.awt.event.ActionListener() {
-        //     public void actionPerformed(java.awt.event.ActionEvent evt) {
-        //         crudWordActionPerformed(evt);
-        //     }
-        // });
-        
+        crudWord.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Word  ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 18), new java.awt.Color(0, 153, 153))); // NOI18N
 
         crudPro.setFont(new java.awt.Font("Tahoma", 2, 14)); // NOI18N
-        crudPro.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pronunciation  ",
-                javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                new java.awt.Font("Tahoma", 3, 18), new java.awt.Color(0, 153, 153))); // NOI18N
-		crudPro.getDocument().addDocumentListener(new  DocumentValidateListener());
-		
-		crudTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        crudPro.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Pronunciation  ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 18), new java.awt.Color(0, 153, 153))); // NOI18N
+
+        crudTitle.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         crudTitle.setForeground(new java.awt.Color(0, 102, 102));
         crudTitle.setText("Create new word");
 
         crudMean.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        crudMean.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Meaning  ",
-                javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                new java.awt.Font("Tahoma", 3, 18), new java.awt.Color(0, 153, 153))); // NOI18N
-		crudMean.getDocument().addDocumentListener(new DocumentValidateListener());
+        crudMean.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Meaning  ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 18), new java.awt.Color(0, 153, 153))); // NOI18N
 
         crudPartOfSpeech.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        crudPartOfSpeech.setBorder(javax.swing.BorderFactory.createTitledBorder(
-                javax.swing.BorderFactory.createTitledBorder(null, "Type",
-                        javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
-                        javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 18),
-                        new java.awt.Color(0, 153, 153)),
-                "Part of speech", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION,
-                javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 18),
-				new java.awt.Color(0, 153, 153))); // NOI18N
-		crudPartOfSpeech.getDocument().addDocumentListener(new  DocumentValidateListener());
-        // crudPartOfSpeech.addActionListener(new java.awt.event.ActionListener() {
-        // public void actionPerformed(java.awt.event.ActionEvent evt) {
-        // crudPartOfSpeechActionPerformed(evt);
-        // }
-        // });
+        crudPartOfSpeech.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder(null, "Type", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 18), new java.awt.Color(0, 153, 153)), "Part of speech", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 18), new java.awt.Color(0, 153, 153))); // NOI18N
 
         scrollPaneCrud.setBackground(new java.awt.Color(255, 255, 255));
-        scrollPaneCrud.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Description and examples    ",
-                javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                new java.awt.Font("Tahoma", 3, 18), new java.awt.Color(0, 153, 153))); // NOI18N
+        scrollPaneCrud.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Description and examples    ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 18), new java.awt.Color(0, 153, 153))); // NOI18N
         scrollPaneCrud.setAutoscrolls(true);
 
-		crudDsc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-		crudDsc.getDocument().addDocumentListener(new DocumentValidateListener());
-		crudDsc.getDocument().addDocumentListener(new  DocumentValidateListener());
+        crudDsc.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         scrollPaneCrud.setViewportView(crudDsc);
 
         crudButton.setBackground(new java.awt.Color(255, 255, 255));
         crudButton.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         crudButton.setText("Update");
-		crudButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 204)));
-		crudButton.setEnabled(false);
-        // crudButton.addActionListener(new java.awt.event.ActionListener() {
-        //     public void actionPerformed(java.awt.event.ActionEvent evt) {
-        //         crudButtonActionPerformed(evt);
-        //     }
-        // });
+        crudButton.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 204, 204)));
+        crudButton.setEnabled(false);
 
         crudSynonym.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        crudSynonym.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Synonym  ",
-                javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION,
-                new java.awt.Font("Tahoma", 3, 18), new java.awt.Color(0, 153, 153))); // NOI18N
+        crudSynonym.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Synonym  ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 3, 18), new java.awt.Color(0, 153, 153))); // NOI18N
 
         back.setBackground(new java.awt.Color(255, 255, 255));
-        back.setIcon(new javax.swing.ImageIcon(
-                getClass().getResource("/com/mycompany/dictionaryofficial/images/back .png"))); // NOI18N
-        // back.addActionListener(new java.awt.event.ActionListener() {
-        // public void actionPerformed(java.awt.event.ActionEvent evt) {
-        // backActionPerformed(evt);
-        // }
-        // });
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/mycompany/dictionaryofficial/images/back .png"))); // NOI18N
 
         javax.swing.GroupLayout crudPanelLayout = new javax.swing.GroupLayout(crudPanel);
         crudPanel.setLayout(crudPanelLayout);
-        crudPanelLayout.setHorizontalGroup(crudPanelLayout
-                .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(crudPanelLayout.createSequentialGroup().addContainerGap().addGroup(crudPanelLayout
-                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(crudPanelLayout.createSequentialGroup().addComponent(back).addGap(290, 290, 290)
-                                .addComponent(crudTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 223,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 425, Short.MAX_VALUE))
-                        .addGroup(crudPanelLayout.createSequentialGroup()
+        crudPanelLayout.setHorizontalGroup(
+            crudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(crudPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(crudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(crudPanelLayout.createSequentialGroup()
+                        .addComponent(back)
+                        .addGap(290, 290, 290)
+                        .addComponent(crudTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 425, Short.MAX_VALUE))
+                    .addGroup(crudPanelLayout.createSequentialGroup()
+                        .addGroup(crudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(crudSynonym)
+                            .addComponent(scrollPaneCrud, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(crudPanelLayout.createSequentialGroup()
+                                .addGroup(crudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(crudMean, javax.swing.GroupLayout.DEFAULT_SIZE, 556, Short.MAX_VALUE)
+                                    .addComponent(crudWord))
                                 .addGroup(crudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(crudSynonym)
-                                        .addComponent(scrollPaneCrud, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(crudPanelLayout.createSequentialGroup().addGroup(crudPanelLayout
-                                                .createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                .addComponent(crudMean, javax.swing.GroupLayout.DEFAULT_SIZE, 556,
-                                                        Short.MAX_VALUE)
-                                                .addComponent(crudWord))
-                                                .addGroup(crudPanelLayout
-                                                        .createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(crudPanelLayout.createSequentialGroup()
-                                                                .addGap(20, 20, 20).addComponent(crudPro))
-                                                        .addGroup(crudPanelLayout.createSequentialGroup()
-                                                                .addGap(18, 18, 18).addComponent(crudPartOfSpeech)))))
-                                .addContainerGap())))
-                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, crudPanelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE).addComponent(crudButton,
-                                javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap()));
-        crudPanelLayout.setVerticalGroup(crudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(crudPanelLayout.createSequentialGroup().addContainerGap()
-                        .addGroup(crudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(crudTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 38,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(back))
-                        .addGap(33, 33, 33)
-                        .addGroup(crudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(crudWord, javax.swing.GroupLayout.PREFERRED_SIZE, 55,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(crudPro, javax.swing.GroupLayout.PREFERRED_SIZE, 56,
-                                        javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(crudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(crudMean).addComponent(crudPartOfSpeech))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(crudSynonym, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(scrollPaneCrud, javax.swing.GroupLayout.PREFERRED_SIZE, 210,
-                                javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(crudButton,
-                                javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)));
+                                    .addGroup(crudPanelLayout.createSequentialGroup()
+                                        .addGap(20, 20, 20)
+                                        .addComponent(crudPro))
+                                    .addGroup(crudPanelLayout.createSequentialGroup()
+                                        .addGap(18, 18, 18)
+                                        .addComponent(crudPartOfSpeech)))))
+                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, crudPanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(crudButton, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        crudPanelLayout.setVerticalGroup(
+            crudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(crudPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(crudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(crudTitle, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(back))
+                .addGap(33, 33, 33)
+                .addGroup(crudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(crudWord, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(crudPro, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(crudPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(crudMean)
+                    .addComponent(crudPartOfSpeech))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(crudSynonym, javax.swing.GroupLayout.DEFAULT_SIZE, 60, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scrollPaneCrud, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(crudButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(
-                crudPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE,
-                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
-        layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(
-                crudPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE,
-                javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE));
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(crudPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(crudPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

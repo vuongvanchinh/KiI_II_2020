@@ -11,6 +11,10 @@
             <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
             <url>file:${project.basedir}/lib</url>
         </repository>
+        <repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
     </repositories>
     <dependencies>
         <dependency>
@@ -24,10 +28,30 @@
             <artifactId>freetts</artifactId>
             <version>1.2.2</version>
         </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+			<groupId>com.github.goxr3plus</groupId>
+			<artifactId>java-google-speech-api</artifactId>
+			<version>V2.0</version>
+		</dependency>
+        
     </dependencies>
+    <name>Java Google Speech Recognizer</name>
+	<description>Made by GOXR3PLUS STUDIO based on  https://github.com/lkuza2/java-speech-api/</description>
+	<organization>
+		<name>GOXR3PLUS STUDIO</name>
+	</organization>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>14</maven.compiler.source>
         <maven.compiler.target>14</maven.compiler.target>
     </properties>
+    
+
 </project>

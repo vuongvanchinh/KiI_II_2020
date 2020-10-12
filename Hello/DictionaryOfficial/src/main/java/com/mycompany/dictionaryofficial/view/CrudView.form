@@ -130,9 +130,6 @@
               </Border>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crudWordActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="crudPro">
           <Properties>
@@ -195,9 +192,6 @@
               </Border>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crudPartOfSpeechActionPerformed"/>
-          </Events>
         </Component>
         <Container class="javax.swing.JScrollPane" name="scrollPaneCrud">
           <Properties>
@@ -245,10 +239,8 @@
                 </LineBorder>
               </Border>
             </Property>
+            <Property name="enabled" type="boolean" value="false"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="crudButtonActionPerformed"/>
-          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="crudSynonym">
           <Properties>
@@ -274,9 +266,6 @@
               <Image iconType="3" name="/com/mycompany/dictionaryofficial/images/back .png"/>
             </Property>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backActionPerformed"/>
-          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -22,7 +22,7 @@ public class Dictionary {
 
    public void addToHistory(Word word) {
       if(history.size() > LIMIT_HISTORY ) {
-         history.remove(history.size() -1 );
+         history.remove(LIMIT_HISTORY -1);
       }
       this.history.add(word);
    }
